@@ -1,0 +1,18 @@
+<?php require_once 'templates/layout/header.phtml'; ?>
+<?php if(!empty($videogame)): ?>
+<h2 class="nombre-detalle-videojuego"><?= $videogame[0]->nombre ?></h2>
+<section class="detalle-videojuego">
+        <div class="div-detalle-videojuegos">
+            <ul>
+                <li>nombre: <span class="span-atributo-videojuego"><?= $videogame[0]->nombre ?></span></li>
+                <li>Plataforma: <span class="span-atributo-videojuego"><?= $videogame[0]->id_plataforma ?></span></li>
+            </ul>
+        </div>
+    <?php else: ?>
+        <p>El item no existe.</p>
+    <?php endif ?>
+</section>
+
+<a href="plataforma"><-Volver</a>
+
+<?php require_once 'templates/layout/footer.phtml'; ?>

@@ -1,0 +1,40 @@
+<?php require_once 'templates/layout/header.phtml'; ?>
+
+
+<section>
+    <h1>PLATAFORMAS</h1>
+    <?php if(!empty($plataformas)): ?>
+        <ul>
+        <?php foreach($plataformas as $plataforma): ?>
+    <div class="div-lista-videojuegos">
+        <a class="link-elemento-videojuego" href="view_detail_plats/<?=$plataforma->id_plataforma?>">
+        <li class="elemento-videojuego"><h2><?= $plataforma->plataforma ?></h2></li>
+        <li class="elemento-videojuego"><h2><?= $plataforma->fabricante ?></h2></li>
+        <li class="elemento-videojuego"><h2><?= $plataforma->tipo ?></h2></li>
+        </a>
+    </div>
+        <?php endforeach ?>
+        </ul>
+    <?php else: ?>
+        <p>No hay plataforma en la lista.</p>
+    <?php endif ?>
+</section>
+
+    <form novalidate method="POST" action="add_plataforma">
+    <div>
+        <label for="plataforma">Agregar Plataforma:</label>
+         <input class="input-form-agregar" type="text" name="plataforma" id="plataforma" required>
+    </div>
+    <div>
+        <label for="fabricante">Fabricante:</label>
+         <input class="input-form-agregar" type="text" name="fabricante" id="fabricante" required>
+    </div>
+    <div>
+        <label for="tipo">Tipo:</label>
+         <input class="input-form-agregar" type="text" name="tipo" id="tipo" required>
+    </div>
+    <button type="submit">Añadir</button>
+    </form>
+
+
+<?php require_once 'templates/layout/footer.phtml'; ?>

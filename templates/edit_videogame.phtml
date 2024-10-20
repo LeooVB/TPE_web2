@@ -1,0 +1,45 @@
+<?php require_once 'templates/layout/header.phtml'; ?>
+
+<?php if(!empty($videogame[0])): ?>
+    <h1>EDITAR ITEM ID: <?=$videogame[0]->id_juego ?></h1>
+    <table>
+        <thead>
+            <th>id_juego</th>
+            <th>Nombre</th>
+            <th>Desarrollador</th>
+            <th>Distribuidor</th>
+            <th>Género</th>
+            <th>Fecha de lanzamiento</th>
+            <th>Plataforma</th>
+            <th>Modos de juego</th>
+            <th>Precio</th>
+        </thead>
+            <tr>
+            <td><?=$videogame[0]->id_juego?></td>
+            <form action="edit_videogame/<?=$videogame[0]->id_juego?>" method="POST">
+                <td><input name="nombre" class="input-form-editar" type="text" value="<?=$videogame[0]->nombre?>" required></td>
+                <td><input name="desarrollador" class="input-form-editar" type="text" value="<?=$videogame[0]->desarrollador?>" required></td>
+                <td><input name="distribuidor" class="input-form-editar" type="text" value="<?=$videogame[0]->distribuidor?>" required></td>
+                <td><input name="genero" class="input-form-editar" type="text" value="<?=$videogame[0]->genero?>" required></td>
+                <td><input name="fecha_lanzamiento" class="input-form-editar" type="date" value="<?=$videogame[0]->fecha_lanzamiento?>" required></td>
+                <td>
+                <select name="id_plataforma">
+                <?php foreach ($platforms as $platform): ?>
+                    <option value="<?=$platform->id_plataforma?>" <?php if($platform->plataforma == $videogame[0]->plataforma): ?> selected <?php endif ?>>ID  <?=$platform->id_plataforma?> | <?=$platform->plataforma?></option>
+                <?php endforeach ?>
+                </select>
+                </td>
+                <td><input name="modos_de_juego" class="input-form-editar" type="text" value="<?=$videogame[0]->modos_de_juego?>" required></td>
+                <td><input name="precio" class="input-form-editar" type="number" value="<?=$videogame[0]->precio?>" required></td>
+                <td>
+                    <button type="submit">EDITAR</button>
+                </td>
+            </tr>
+        </form>
+    </table>
+<a href="manage-videogames"><-Volver</a>
+<?php else: ?>
+    <p>Este item no existe.</p>
+<?php endif ?>
+
+<?php require_once 'templates/layout/footer.phtml'; ?>
